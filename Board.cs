@@ -24,9 +24,9 @@ namespace tic_tac_toe
             {
                 return false;
             }
-    }
+        }
 
-            
+
 
         public char GetMarkAtLocation(int xPos, int yPos)
         {
