@@ -1,6 +1,6 @@
 ﻿using tic_tac_toe;
 
-namespace UnitTests
+namespace tic_tac_toe
 {
     public class Player
     {

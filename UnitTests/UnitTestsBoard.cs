@@ -9,6 +9,12 @@ namespace UnitTests
         Board testBoard;
 
         [Test]
+        public void WhenICheckASquareThatIsEmpty_ThenIAmToldItsFree()
+        {
+            //TODO
+        }
+
+        [Test]
         public void WhenIMakeAMoveToAnEmptySpace_ThenMoveIsAccepted()
         {
             testBoard = new Board(3);

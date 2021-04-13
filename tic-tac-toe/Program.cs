@@ -4,14 +4,28 @@ namespace tic_tac_toe
 {
     class Program
     {
-        private Board gameBoard;
-        
         static void Main(string[] args)
         {
-            //create board
-            //create players
+            Board gameBoard = new Board(3);
+            Player playerOne = new Player("Bob", 'X', PlayerType.Human);
+            Player playerTwo = new Player("Jim", 'O', PlayerType.Human);
 
-            //loop while not won
+            bool gameHasBeenWon = false;
+
+            do
+            {
+                Console.Write("Enter your X position: ");
+                int playerXMove = Int32.Parse(Console.ReadLine());
+
+                Console.Write("Enter your Y position: ");
+                int playerYMove = Int32.Parse(Console.ReadLine());
+
+                if (gameBoard.MakeMove(playerOne.Mark, (int)playerXMove, playerYMove) == false)
+                {
+
+                }
+
+            } while (!gameHasBeenWon);
 
             //get move from player
             //check if valid move

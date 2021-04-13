@@ -26,8 +26,6 @@ namespace tic_tac_toe
             }
         }
 
-
-
         public char GetMarkAtLocation(int xPos, int yPos)
         {
             return grid[xPos, yPos];
