@@ -1,6 +1,4 @@
-﻿using tic_tac_toe;
-
-namespace tic_tac_toe
+﻿namespace tic_tac_toe
 {
     public class Player
     {

@@ -8,27 +8,32 @@ namespace UnitTests
     {
         Board testBoard;
 
-        [Test]
-        public void WhenICheckASquareThatIsEmpty_ThenIAmToldItsFree()
+        [SetUp]
+        public void SetUp()
         {
-            //TODO
+            testBoard = new Board(3);
         }
 
         [Test]
-        public void WhenIMakeAMoveToAnEmptySpace_ThenMoveIsAccepted()
+        public void WhenICheckASquareThatIsEmpty_ThenIAmToldItsFree()
         {
-            testBoard = new Board(3);
-            char expectedMark = 'X';
-
-            bool result = testBoard.MakeMove(expectedMark, 0, 0);
+            bool result = testBoard.IsSquareFree(0, 0);
 
             Assert.IsTrue(result);
         }
 
         [Test]
-        public void WhenIMakeAMoveToAnEmptySpace_ThenMoveIsStored()
+        public void WhenICheckASquareThatIsOccupied_ThenIAmToldItsNotFree()
         {
-            testBoard = new Board(3);
+            testBoard.MakeMove('X', 0, 0);
+            bool result = testBoard.IsSquareFree(0, 0);
+
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void WhenIMakeAMoveToASquare_ThenMoveIsStored()
+        {
             char expectedMark = 'X';
 
             testBoard.MakeMove(expectedMark, 0, 0);
@@ -37,35 +42,8 @@ namespace UnitTests
         }
 
         [Test]
-        public void WhenIMakeAMoveToAnOccupiedSpace_ThenMoveIsRejected()
+        public void WhenIMakeAWinningHorizontalMove_ThenWinIsReturned()
         {
-            testBoard = new Board(3);
-            char mark = 'X';
-
-            testBoard.MakeMove(mark, 0, 0);
-            bool result = testBoard.MakeMove(mark, 0, 0);
-
-            Assert.IsFalse(result);
-        }
-
-        [Test]
-        public void WhenIMakeAMoveToAnOccupiedSpace_ThenMoveIsNotStored()
-        {
-            testBoard = new Board(3);
-            char previousMark = 'X';
-            char newMark = 'O';
-
-            testBoard.MakeMove(previousMark, 0, 0);
-            bool result = testBoard.MakeMove(newMark, 0, 0);
-
-            Assert.AreEqual(previousMark, testBoard.GetMarkAtLocation(0, 0));
-        }
-
-        [Test]
-        public void WhenIMakeAHorizontalWinningMove_ThenWinIsReturned()
-        {
-            testBoard = new Board(3);
-
             testBoard.MakeMove('X', 0, 0);
             testBoard.MakeMove('X', 0, 1);
             testBoard.MakeMove('X', 0, 2);
@@ -76,10 +54,8 @@ namespace UnitTests
         }
 
         [Test]
-        public void WhenIMakeAVerticalWinningMove_ThenWinIsReturned()
+        public void WhenIMakeAWinningVerticalMove_ThenWinIsReturned()
         {
-            testBoard = new Board(3);
-
             testBoard.MakeMove('X', 0, 1);
             testBoard.MakeMove('X', 1, 1);
             testBoard.MakeMove('X', 2, 1);
@@ -90,10 +66,8 @@ namespace UnitTests
         }
 
         [Test]
-        public void WhenIMakeADiagonalWinningMove_ThenWinIsReturned()
+        public void WhenIMakeAWinningDiagonalMove_ThenWinIsReturned()
         {
-            testBoard = new Board(3);
-
             testBoard.MakeMove('X', 0, 2);
             testBoard.MakeMove('X', 1, 1);
             testBoard.MakeMove('X', 2, 0);

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace tic_tac_toe
+﻿namespace tic_tac_toe
 {
     public class Board
     {
@@ -13,17 +11,18 @@ namespace tic_tac_toe
             boardSize = size;
         }
 
-        public bool MakeMove(char mark, int xPos, int yPos)
+        public void MakeMove(char mark, int xPos, int yPos)
+        {
+            grid[xPos, yPos] = mark;
+        }
+
+        public bool IsSquareFree(int xPos, int yPos)
         {
             if (grid[xPos, yPos] == '\0')
-            {
-                grid[xPos, yPos] = mark;
+
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
 
         public char GetMarkAtLocation(int xPos, int yPos)

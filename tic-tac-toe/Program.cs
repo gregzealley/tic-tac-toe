@@ -20,11 +20,6 @@ namespace tic_tac_toe
                 Console.Write("Enter your Y position: ");
                 int playerYMove = Int32.Parse(Console.ReadLine());
 
-                if (gameBoard.MakeMove(playerOne.Mark, (int)playerXMove, playerYMove) == false)
-                {
-
-                }
-
             } while (!gameHasBeenWon);
 
             //get move from player
